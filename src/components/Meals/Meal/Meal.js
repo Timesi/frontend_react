@@ -4,18 +4,18 @@ import Counter from './../../UI/Counter/Counter';
 
 // 食物
 
-const Meal = () => {
+const Meal = (props) => {
     return ( 
         <div className={classes.Meal}>
             <div className={classes.ImgBox}>
-                <img src='/img/meals/1.png' />
+                <img src={props.meal.img} />
             </div>
             <div>
-                <h2 className={classes.Title}>商品名称</h2>
-                <p className={classes.Desc}>配料配料配料配料配料配料配料配料配料配料</p>
+                <h2 className={classes.Title}>{props.meal.title}</h2>
+                <p className={classes.Desc}>{props.meal.desc}</p>
                 <div className={classes.PriceWrap}>
-                    <span className={classes.Price}>12</span>
-                    <Counter amount={1}/>
+                    <span className={classes.Price}>{props.meal.price}</span>
+                    <Counter amount={props.meal.amount}/>
                 </div>
             </div>
         </div>
