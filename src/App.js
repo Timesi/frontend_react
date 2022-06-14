@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Meals from './components/Meals/Meals';
+import CarContext from './store/cart-context';
 
 // 模拟数据
 const MEALS_DATA = [
@@ -52,12 +53,65 @@ const MEALS_DATA = [
 ];
 
 function App() {
+  // 创建state用于存储食物列表
   const [mealsData, setMealsdata] = useState(MEALS_DATA);
 
+  // 创建state用于存储购物车数据
+  // items存放商品
+  // totalAmount存放商品总数
+  // totalPrice存放商品总价
+  const [carData, setCarData] = useState({
+    items: [],
+    totalAmount: 0,
+    totalPrice: 0
+  });
+
+  // 向购物车中添加商品
+  const addItem = (meal) => {
+    const newCart = {...carData};
+
+    // 判断购物车中是否已经存在该商品
+    if (newCart.items.indexOf(meal) === -1) {
+      newCart.items.push(meal);
+      // 修改商品数量
+      meal.amount = 1;
+    } else {
+      // 增加商品数量
+      meal.amount += 1;
+    }
+
+    // 增加商品总数
+    newCart.totalAmount += 1;
+
+    // 增加总金额
+    newCart.totalPrice += meal.price;
+    
+    setCarData(newCart);
+    
+  }
+
+  const removeItem = (meal) => {
+    const newCart = {...carData};
+
+    meal.amount -= 1;
+
+    if (meal.amount === 0) {
+      newCart.items.splice(newCart.items.indexOf(meal), 1);
+    }
+
+    newCart.totalAmount -= 1;
+    newCart.totalPrice -= meal.price;
+
+    setCarData(newCart);
+  }
+
   return (
-    <div>
-      <Meals mealsData={mealsData} />
-    </div>
+    <CarContext.Provider value={{...carData, addItem, removeItem}}>
+      <div>
+        <Meals mealsData={mealsData} />
+      </div>
+    </CarContext.Provider>
+
   );
 }
 

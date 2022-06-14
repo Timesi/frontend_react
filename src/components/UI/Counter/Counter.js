@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classes from './Counter.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import CarContext from '../../../store/cart-context';
 
 // 引入FontAwesome
 //      安装依赖
@@ -18,20 +19,36 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 // 计数器组件
 const Counter = (props) => {
+
+    const ctx = useContext(CarContext);
+
+    const addButtonHandler = () => {
+        ctx.addItem(props.meal);
+    }
+
+    const subButtonHandler = () => {
+        ctx.removeItem(props.meal);
+    }
+
     return ( 
         <div className={classes.Counter}>
             {
-                (props.amount && props.amount !== 0) ? (
+                (props.meal.amount && props.meal.amount !== 0) ? (
                     <React.Fragment>
-                        <button className={classes.Sub}><FontAwesomeIcon icon={faMinus}/></button>
-                        <span className={classes.count}>{props.amount}</span>
+                        <button 
+                            className={classes.Sub} 
+                            onClick={subButtonHandler}>
+                            <FontAwesomeIcon icon={faMinus}/>
+                        </button>
+                        <span className={classes.count}>{props.meal.amount}</span>
                     </React.Fragment>
 
                 ) : null
             }
             
-            
-            <button className={classes.Add}>
+            <button 
+                className={classes.Add} 
+                onClick={addButtonHandler}>
                 <FontAwesomeIcon icon={faPlus}/>
             </button>
         </div>
