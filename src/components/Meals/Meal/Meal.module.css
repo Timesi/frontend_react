@@ -30,8 +30,9 @@ img {
     padding-right: 40rem;
 }
 
-.ProceWrap {
+.PriceWrap {
     margin-top: 25rem;
+    padding-right: 25rem;
     display: flex;
     justify-content: space-between;
 }
