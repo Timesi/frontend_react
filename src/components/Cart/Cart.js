@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import classes from './Cart.module.css';
 import iconImg from '../../asset/bag.png'
 import CarContext from '../../store/cart-context';
+import CartDetails from './CartDetails/CartDetails';
 
 const Cart = () => {
 
@@ -9,6 +10,7 @@ const Cart = () => {
 
     return ( 
         <div className={classes.Cart}>
+            <CartDetails />
             <div className={classes.Icon}>
                 <img src={iconImg} />
                 {ctx.totalAmount === 0 ? null : 
