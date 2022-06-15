@@ -67,6 +67,12 @@ function App() {
     totalPrice: 0
   });
 
+  // 创建一个过滤meals的函数
+  const filterHandler = (keyword) => {
+    const newMealsData = MEALS_DATA.filter(item => item.title.indexOf(keyword) !== -1);
+    setMealsdata(newMealsData);
+  }
+
   // 向购物车中添加商品
   const addItem = (meal) => {
     const newCart = {...carData};
@@ -109,7 +115,7 @@ function App() {
   return (
     <CarContext.Provider value={{...carData, addItem, removeItem}}>
       <div>
-        <FilterMeals />
+        <FilterMeals onFilter={filterHandler} />
         <Meals mealsData={mealsData} />
       </div>
     </CarContext.Provider>
