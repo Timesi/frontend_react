@@ -113,8 +113,19 @@ function App() {
     setCarData(newCart);
   }
 
+  const clearCart = () => {
+    const newCart = {...carData};
+    // 将商品数量清零
+    newCart.items.forEach(item => delete item.amount);
+    newCart.items = [];
+    newCart.totalAmount = 0;
+    newCart.totalPrice = 0;
+
+    setCarData(newCart);
+  }
+
   return (
-    <CarContext.Provider value={{...carData, addItem, removeItem}}>
+    <CarContext.Provider value={{...carData, addItem, removeItem, clearCart}}>
       <div>
         <FilterMeals onFilter={filterHandler} />
         <Meals mealsData={mealsData} />

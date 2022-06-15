@@ -7,6 +7,9 @@ const CarContext = React.createContext({
     addItem: () => {
     },
     removeItem: () => {
+    },
+    clearCart: () => {
+        
     }
 });
  
