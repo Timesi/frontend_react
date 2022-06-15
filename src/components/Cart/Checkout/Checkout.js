@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import classes from "./Checkout.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import CarContext from '../../../store/cart-context';
+import { useContext } from 'react';
 
 const checkoutRoot = document.getElementById('checkout-root');
 
 const Checkout = (props) => {
+
+    const ctx = useContext(CarContext);
+
     return ReactDOM.createPortal(
         <div className={classes.Checkout}>
             <div className={classes.Close}>
@@ -14,6 +19,22 @@ const Checkout = (props) => {
                     onClick={() => props.onHide()}
                     icon={faXmark}
                 />
+            </div>
+
+            <div className={classes.MealDesc}>
+                <header className={classes.Header}>
+                    <h2 className={classes.Title}>
+                        餐品详情
+                    </h2>
+                </header>
+                    
+                <div>
+                    列表
+                </div>
+
+                <footer className={classes.Footer}>
+                    <p className={classes.TotlePrice}>{ctx.totalPrice}</p>
+                </footer>
             </div>
         </div>, checkoutRoot);
 }
