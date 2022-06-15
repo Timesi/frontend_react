@@ -36,7 +36,7 @@
     right: -10rem;
 }
 
-.Price {
+.Price, .NoMeal {
     display: flex;
     align-items: center;
     margin-left: 120rem;
@@ -55,4 +55,14 @@
     background-color: #FCBF49;
     width: 200rem;
     border-radius: 36rem;
+}
+
+.NoMeal {
+    color: #aaa;
+}
+
+.Disabled {
+    background-color: #777;
+    color: #eee;
+
 }
