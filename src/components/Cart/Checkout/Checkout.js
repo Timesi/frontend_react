@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import CarContext from '../../../store/cart-context';
 import { useContext } from 'react';
+import CheckoutItem from './CheckoutItem/CheckoutItem';
 
 const checkoutRoot = document.getElementById('checkout-root');
 
@@ -28,8 +29,8 @@ const Checkout = (props) => {
                     </h2>
                 </header>
                     
-                <div>
-                    列表
+                <div className={classes.Meals}>
+                    {ctx.items.map(item => <CheckoutItem key={item.id} meal={item} />)}
                 </div>
 
                 <footer className={classes.Footer}>
