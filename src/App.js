@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import FilterMeals from './components/FilterMeals/FilterMeals';
 import Meals from './components/Meals/Meals';
 import CarContext from './store/cart-context';
 
@@ -108,6 +109,7 @@ function App() {
   return (
     <CarContext.Provider value={{...carData, addItem, removeItem}}>
       <div>
+        <FilterMeals />
         <Meals mealsData={mealsData} />
       </div>
     </CarContext.Provider>
