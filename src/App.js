@@ -3,6 +3,7 @@ import './App.css';
 import FilterMeals from './components/FilterMeals/FilterMeals';
 import Meals from './components/Meals/Meals';
 import CarContext from './store/cart-context';
+import Cart from './components/Cart/Cart';
 
 // 模拟数据
 const MEALS_DATA = [
@@ -117,6 +118,7 @@ function App() {
       <div>
         <FilterMeals onFilter={filterHandler} />
         <Meals mealsData={mealsData} />
+        <Cart />
       </div>
     </CarContext.Provider>
 
