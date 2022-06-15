@@ -11,7 +11,7 @@
     height: 36rem;
     line-height: 36rem;
     border-radius: 50%;
-    font-size: 14px;
+    font-size: 28rem;
     padding: 0;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .count {
-    font-size: 18px;
+    font-size: 36rem;
     margin: 0 5px;
 }
 
