@@ -12,7 +12,10 @@ const CartDetails = () => {
 
     return (
         <Backdrop>
-            <div className={classes.CartDetails}>
+            <div 
+                className={classes.CartDetails}
+                onClick={e => e.stopPropagation()}
+            >
                 <header className={classes.Header}>
                     <h2 className={classes.Title}>餐品详情</h2>
                     <div className={classes.Clear}>
