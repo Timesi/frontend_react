@@ -6,6 +6,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import CarContext from '../../../store/cart-context';
 import { useContext } from 'react';
 import CheckoutItem from './CheckoutItem/CheckoutItem';
+import Bar from './Bar/Bar';
 
 const checkoutRoot = document.getElementById('checkout-root');
 
@@ -37,6 +38,8 @@ const Checkout = (props) => {
                     <p className={classes.TotlePrice}>{ctx.totalPrice}</p>
                 </footer>
             </div>
+
+            <Bar totalPrice={ctx.totalPrice}/>
         </div>, checkoutRoot);
 }
  
